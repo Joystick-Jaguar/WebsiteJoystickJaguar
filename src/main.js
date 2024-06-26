@@ -1,123 +1,108 @@
-// const menu = document.querySelector("#mobile-menu");
-// const menuLinks = document.querySelector(".navbar-menu");
+import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module.js";
+import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
+import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
 
-// menu.addEventListener("click", function () {
-//   menu.classList.toggle("is-active");
-//   menuLinks.classList.toggle("active");
-// });
+import { fetchShader } from "./shader.js";
+import { DeltaTime } from "./deltaTime.js";
+import { Settings } from "./settings.js";
 
-// menuLinks.addEventListener("click", function () {
-//   menu.classList.toggle("is-active");
-//   menuLinks.classList.toggle("active");
-// });
+export class Main {
+  static async init() {
+    this.mouseWheelDelta = 0;
 
-// const tween = KUTE.fromTo(
-//   "#blob1",
-//   { path: "#blob1" },
-//   { path: "#blob2" },
-//   { repeat: 999, duration: 3000, yoyo: true }
-// ).start();
+    this.moveVelocity = {x: 0, y: 0, z: 0};
+    this.rotateVelocity = {x: 0, y: 0, z: 0};
 
+    DeltaTime.init();
 
-// // Create a scene
-// const scene = new THREE.Scene();
+    // Fetch a shader
+    const vertexShaderSource = await fetchShader('assets/shaders/color/vertexShader.glsl');
+    const fragmentShaderSource = await fetchShader('assets/shaders/color/fragmentShader.glsl');
 
-// // Create a camera
-// const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-// camera.position.z = 5;
+    // Create a scene
+    this.scene = new THREE.Scene();
 
-// // Create a renderer and attach it to the DOM
-// const renderer = new THREE.WebGLRenderer();
-// renderer.setSize(window.innerWidth, window.innerHeight);
-// document.body.appendChild(renderer.domElement);
+    // Create a camera
+    this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    this.camera.position.z = 2.5;
 
-// // Create a geometry
-// const geometry = new THREE.BoxGeometry();
+    // load 3D model
+    this.loadModel("assets/models/SM_Blockout.glb");
 
-// // Create a material
-// const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    //Instantiate a new renderer and set its size
+    this.renderer = new THREE.WebGLRenderer({ alpha: true });
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
 
-// // Create a mesh
-// const cube = new THREE.Mesh(geometry, material);
+    //Add the renderer to the DOM
+    document.body.appendChild(this.renderer.domElement);
 
-// // Add the mesh to the scene
-// scene.add(cube);
+    //Add lights to the scene
+    const topLight = new THREE.DirectionalLight(0xffffff, 2.5); // (color, intensity)
+    topLight.position.set(0, 0, 2.5) //top-left-ish
+    topLight.castShadow = true;
+    this.scene.add(topLight);
 
-// // Render loop
-// function animate() {
-//   requestAnimationFrame(animate);
+    const ambientLight = new THREE.AmbientLight(0x333333, 1);
+    this.scene.add(ambientLight);
 
-//   // Rotate the cube for some basic animation
-//   cube.rotation.x += 0.01;
-//   cube.rotation.y += 0.01;
+    // binding resize event
+    window.addEventListener("resize", this.resize.bind(this));
 
-//   // Render the scene from the perspective of the camera
-//   renderer.render(scene, camera);
-// }
-
-// animate();
-
-// // Handle window resize
-// window.addEventListener('resize', () => {
-//   camera.aspect = window.innerWidth / window.innerHeight;
-//   camera.updateProjectionMatrix();
-//   renderer.setSize(window.innerWidth, window.innerHeight);
-// });
-
-
-
-//--------------------------------------------//
-
-// Create a scene
-const scene = new THREE.Scene();
-
-// Create a camera
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 5;
-
-// Create a renderer and attach it to the DOM
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
-
-// Create a light
-const light = new THREE.DirectionalLight(0xffffff, 1);
-light.position.set(5, 5, 5).normalize();
-scene.add(light);
-
-// Load the FBX model
-const loader = new THREE.FBXLoader();
-loader.load(
-  'assets/models/blockout.fbx', // Path to the .fbx file
-  function (object) {
-    // Add the loaded model to the scene
-    scene.add(object);
-    animate();
-  },
-  undefined,
-  function (error) {
-    console.error(error);
+    window.addEventListener('wheel', (event) => {
+      this.mouseWheelDelta = event.deltaY;
+    });
   }
-);
 
-// Render loop
-function animate() {
-  requestAnimationFrame(animate);
+  static run() {
+    requestAnimationFrame(this.run.bind(this));
 
-  // Optional: Add rotation to the loaded model for better visualization
-  scene.traverse(function (object) {
-    if (object.isMesh) {
-      object.rotation.y += 0.01;
+    this.update();
+    this.draw();
+  }
+
+  static update() {
+    DeltaTime.update();
+
+    this.moveVelocity
+
+    if (this.object) {
+      // this.object.rotation.y += 0.01;
+      this.moveVelocity.y += this.mouseWheelDelta * DeltaTime.dt * Settings.moveSpeed; // apll input
+
+      this.moveVelocity.y = Math.max(
+        -Settings.moveSpeed * DeltaTime.dt,
+        Math.min(Settings.moveSpeed * DeltaTime.dt, this.moveVelocity.y)
+      ); // clamp
+      
+      this.moveVelocity.y *= Settings.drag; // apply drag
+
+      this.object.position.y += this.moveVelocity.y * DeltaTime.dt;
     }
-  });
 
-  // Render the scene from the perspective of the camera
-  renderer.render(scene, camera);
+    this.mouseWheelDelta = 0;
+  }
+
+  static draw() {
+    this.renderer.render(this.scene, this.camera);
+  }
+
+  static resize() {
+    // Update the camera aspect ratio and the renderer size
+    this.camera.aspect = window.innerWidth / window.innerHeight;
+    this.camera.updateProjectionMatrix();
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
+  }
+
+  static async loadModel(path) {
+    const loader = new GLTFLoader();
+    loader.load(path, (gltf) => {
+      this.object = gltf.scene;
+      this.scene.add(this.object);
+    });
+  }
 }
 
-// Handle window resize
-window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+document.addEventListener("DOMContentLoaded", async () => {
+  await Main.init();
+  Main.run();
 });
