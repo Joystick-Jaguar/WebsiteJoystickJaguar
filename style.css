@@ -33,11 +33,14 @@ body {
 }
 
 header {
-  /* background-color: #ff0000; */
+  background-color: #ff0000;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  padding: 8px 8px 0px 8px;
+
 
   .left {
     display: flex;
