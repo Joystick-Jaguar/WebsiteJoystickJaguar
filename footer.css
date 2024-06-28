@@ -1,0 +1,34 @@
+footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    padding: 20px 0;
+
+    .bottom_footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    p {
+        color: #ffffff;
+        text-align: center;
+    }
+
+    a {
+        color: #ffffff;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+    }
+}
