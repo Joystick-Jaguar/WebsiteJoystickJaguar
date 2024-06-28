@@ -10,6 +10,11 @@
   --borderColor: #405f5b;
 
   --spacing: 8px;
+  --corner-rounding: 16px;
+  --border-tickness: 4px;
+
+  --additional-spacing-sections: 32px;
+  
   --height-top-bar: 80px;
 }
 
@@ -21,10 +26,6 @@
 
   box-sizing: border-box;
   color: var(--textColor);
-
-  /* transition: 0.25s ease; */
-
-
 
   -webkit-tap-highlight-color: transparent;
 }
@@ -59,8 +60,8 @@ header {
         align-items: center;
 
         background-color: var(--innerColor);
-        border-radius: calc(var(--spacing) * 2);
-        border: var(--spacing) solid var(--borderColor);
+        border-radius: var(--corner-rounding);
+        border: var(--border-tickness) solid var(--borderColor);
 
         width: var(--height-top-bar);
         height: var(--height-top-bar);
@@ -79,8 +80,8 @@ header {
         align-items: center;
 
         background-color: var(--innerColor);
-        border-radius: calc(var(--spacing) * 2);
-        border: var(--spacing) solid var(--borderColor);
+        border-radius: var(--corner-rounding);
+        border: var(--border-tickness) solid var(--borderColor);
 
         width: 240px;
         height: var(--height-top-bar);
@@ -103,8 +104,8 @@ header {
       height: calc(var(--spacing) + var(--height-top-bar));
 
       background-color: var(--innerColor);
-      border-radius: calc(var(--spacing) * 2) calc(var(--spacing) * 2) 0px 0px;
-      border: var(--spacing) solid var(--borderColor);
+      border-radius: var(--corner-rounding) var(--corner-rounding) 0px 0px;
+      border: var(--border-tickness) solid var(--borderColor);
 
       position: relative;
 
@@ -125,8 +126,8 @@ header {
             list-style: none;
 
             background-color: color-mix(in srgb, var(--innerColor) 50%, var(--backgroundColor) 50%);
-            border-radius: calc(var(--spacing) * 2);
-            border: var(--spacing) solid var(--borderColor);
+            border-radius: var(--corner-rounding);
+            border: var(--border-tickness) solid var(--borderColor);
 
             padding: 0.5rem 1rem;
 
@@ -145,28 +146,27 @@ header {
         position: absolute;
         bottom: 0;
         width: 100%;
-        height: calc(var(--spacing) * 2);
+        height: calc(var(--border-tickness) * 2);
         background-color: var(--innerColor);
-        transform: translateY(calc(var(--spacing) * 2));
+        transform: translateY(calc(var(--border-tickness) * 2));
       }
 
       .circle1 {
         position: absolute;
         bottom: 0;
         left: 0;
-        width: calc(var(--spacing) * 4);
-        height: calc(var(--spacing) * 4);
+        width: calc(var(--corner-rounding) * 2);
+        height: calc(var(--corner-rounding) * 2);
         background: transparent;
-        border-radius: 50%;
-        transform: translate(calc(var(--spacing) * -4), calc(var(--spacing) * 2));
-        border-radius: calc(var(--spacing) * 2);
-        border: var(--spacing) solid var(--borderColor);
+        transform: translate(calc(var(--corner-rounding) * -2), calc(var(--border-tickness) * 2));
+        border-radius: var(--corner-rounding);
+        border: var(--border-tickness) solid var(--borderColor);
         clip-path: polygon(
-          calc(100% - var(--spacing)) 0,
-          calc(100% - var(--spacing)) calc(var(--spacing) * 2),
-          calc(100% - calc(var(--spacing) * 2)) calc(100% - calc(var(--spacing) * 2)),
-          var(--spacing) calc(100% - calc(var(--spacing) * -2)),
-          0 calc(100% - var(--spacing)),
+          calc(100% - var(--border-tickness)) 0,
+          calc(100% - var(--border-tickness)) var(--corner-rounding),
+          calc(100% - var(--corner-rounding) * 0.5) calc(100% - var(--corner-rounding) * 0.5),
+          var(--corner-rounding) calc(100% - calc(var(--border-tickness))),
+          0 calc(100% - var(--border-tickness)),
           0% 100%,
           100% 100%,
           100% 0
@@ -177,26 +177,28 @@ header {
         position: absolute;
         bottom: 0;
         left: 0;
-        width: calc(var(--spacing) * 2);
-        height: calc(var(--spacing) * 2);
+        width: var(--corner-rounding);
+        height: var(--corner-rounding);
         background-color: var(--innerColor);
-        transform: translate(calc(var(--spacing) * -2), calc(var(--spacing) * 2));
+        transform: translate(calc(var(--corner-rounding) * -1), calc(var(--border-tickness) * 2));
         clip-path: polygon(
           0 100%,
           100% 100%,
-          100% 0
+          100% 0,
+          70% 70%
         );
       }
     }
   }
 
   .about {
-    margin: 0px var(--spacing) var(--spacing) var(--spacing);
+    margin: 0px var(--spacing) calc(var(--spacing) + var(--additional-spacing-sections)) var(--spacing);
     padding: calc(var(--spacing) * 2);
 
+
     background-color: var(--innerColor);
-    border-radius: calc(var(--spacing) * 2) 0px calc(var(--spacing) * 2) calc(var(--spacing) * 2);
-    border: var(--spacing) solid var(--borderColor);
+    border-radius: var(--corner-rounding) 0px var(--corner-rounding) var(--corner-rounding);
+    border: var(--border-tickness) solid var(--borderColor);
 
     h1 {
       font-size: 1.7rem;
@@ -210,16 +212,17 @@ header {
 
 main {
   margin: 0px var(--spacing) 0 var(--spacing);
+
   #games {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     grid-gap: var(--spacing);
-    padding-bottom: var(--spacing);
+    padding-bottom: calc(var(--spacing) + var(--additional-spacing-sections));
 
     .game {
       background-color: var(--innerColor);
-      border-radius: calc(var(--spacing) * 2);
-      border: var(--spacing) solid var(--borderColor);
+      border-radius: var(--corner-rounding);
+      border: var(--border-tickness) solid var(--borderColor);
 
       display: flex;
       justify-content: center;
@@ -236,10 +239,10 @@ main {
   #news {
     padding: calc(var(--spacing) * 2);
     background-color: var(--innerColor);
-    border-radius: calc(var(--spacing) * 2);
-    border: var(--spacing) solid var(--borderColor);
+    border-radius: var(--corner-rounding);
+    border: var(--border-tickness) solid var(--borderColor);
 
-    margin-bottom: var(--spacing);
+    margin-bottom: calc(var(--spacing) + var(--additional-spacing-sections));
 
     h1 {
       font-size: 1.7rem;
@@ -254,12 +257,12 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: var(--spacing);
-    padding-bottom: var(--spacing);
+    padding-bottom: calc(var(--spacing) + var(--additional-spacing-sections));
 
     .people {
       background-color: var(--innerColor);
-      border-radius: calc(var(--spacing) * 2);
-      border: var(--spacing) solid var(--borderColor);
+      border-radius: var(--corner-rounding);
+      border: var(--border-tickness) solid var(--borderColor);
 
       display: flex;
       flex-direction: column;
@@ -281,8 +284,10 @@ main {
   #carreers {
     padding: calc(var(--spacing) * 2);
     background-color: var(--innerColor);
-    border-radius: calc(var(--spacing) * 2);
-    border: var(--spacing) solid var(--borderColor);
+    border-radius: var(--corner-rounding);
+    border: var(--border-tickness) solid var(--borderColor);
+
+    margin-bottom: calc(var(--spacing) + var(--additional-spacing-sections));
 
     h1 {
       font-size: 1.7rem;
@@ -295,5 +300,14 @@ main {
 }
 
 footer {
-  background-color: #3700ff;
+  margin: 0px var(--spacing) 0 var(--spacing);
+
+  .contact {
+    padding: calc(var(--spacing) * 2);
+    background-color: var(--innerColor);
+    border-radius: var(--corner-rounding);
+    border: var(--border-tickness) solid var(--borderColor);
+
+    margin-bottom: var(--spacing);
+  }
 }
