@@ -20,6 +20,7 @@
   font-family: "Fredoka One", sans-serif;
 
   box-sizing: border-box;
+  color: var(--textColor);
 
   /* transition: 0.25s ease; */
 
@@ -89,7 +90,6 @@ header {
 
         p {
           font-size: 1.7rem;
-          color: var(--textColor);
         }
       }
     }
@@ -135,7 +135,6 @@ header {
             a {
               text-decoration: none;
               font-size: 1.2rem;
-              color: var(--textColor);
             }
           }
         }
@@ -201,19 +200,98 @@ header {
 
     h1 {
       font-size: 1.7rem;
-      color: var(--textColor);
-    
     }
 
     p {
       font-size: 1.2rem;
-      color: var(--textColor);
     }
   }
 }
 
 main {
-  background-color: #00ff15;
+  margin: 0px var(--spacing) 0 var(--spacing);
+  #games {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    grid-gap: var(--spacing);
+    padding-bottom: var(--spacing);
+
+    .game {
+      background-color: var(--innerColor);
+      border-radius: calc(var(--spacing) * 2);
+      border: var(--spacing) solid var(--borderColor);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      aspect-ratio: 1;
+
+      h1 {
+        font-size: 1.7rem;
+      }
+    }
+  }
+
+  #news {
+    padding: calc(var(--spacing) * 2);
+    background-color: var(--innerColor);
+    border-radius: calc(var(--spacing) * 2);
+    border: var(--spacing) solid var(--borderColor);
+
+    margin-bottom: var(--spacing);
+
+    h1 {
+      font-size: 1.7rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+  }
+
+  #team {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: var(--spacing);
+    padding-bottom: var(--spacing);
+
+    .people {
+      background-color: var(--innerColor);
+      border-radius: calc(var(--spacing) * 2);
+      border: var(--spacing) solid var(--borderColor);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      aspect-ratio: 1;
+
+      h1 {
+        font-size: 1.7rem;
+      }
+      
+      p {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  #carreers {
+    padding: calc(var(--spacing) * 2);
+    background-color: var(--innerColor);
+    border-radius: calc(var(--spacing) * 2);
+    border: var(--spacing) solid var(--borderColor);
+
+    h1 {
+      font-size: 1.7rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+  }
 }
 
 footer {
