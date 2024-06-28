@@ -147,6 +147,7 @@ header {
     
   .about h1{
     font-size: 60px;
+    padding-bottom:30px;
     line-height: 1.5cm;
     margin-top: -50px;
 
@@ -156,7 +157,6 @@ header {
 
   .about p{
     font-size: 30px;
-    font-style: italic;
     font-weight: bold;
     color: #ffffff;
   }
