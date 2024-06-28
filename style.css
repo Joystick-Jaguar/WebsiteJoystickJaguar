@@ -8,17 +8,22 @@
   --innerColor: #b7c8c6;
   --textColor: #405f5b;
   --borderColor: #405f5b;
+
+  --spacing: 8px;
+  --height-top-bar: 80px;
 }
 
 * {
   margin: 0;
   padding: 0;
 
-  font-family: "Poppins", sans-serif;
+  font-family: "Fredoka One", sans-serif;
 
   box-sizing: border-box;
 
   /* transition: 0.25s ease; */
+
+
 
   -webkit-tap-highlight-color: transparent;
 }
@@ -34,18 +39,18 @@ body {
 
 header {
   .top-bar {
-    background-color: #ff0000;
-
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
 
-    padding: 8px 8px 0px 8px;
+    padding: var(--spacing) var(--spacing) 0px var(--spacing);
 
     .left {
       display: flex;
       justify-content: left;
       align-items: center;
+
+      margin-bottom: var(--spacing);
 
       #logo-container {
         display: flex;
@@ -53,13 +58,13 @@ header {
         align-items: center;
 
         background-color: var(--innerColor);
-        border-radius: 16px;
-        border: 8px solid var(--borderColor);
+        border-radius: calc(var(--spacing) * 2);
+        border: var(--spacing) solid var(--borderColor);
 
-        width: 80px;
-        height: 80px;
+        width: var(--height-top-bar);
+        height: var(--height-top-bar);
 
-        padding: 8px;
+        padding: var(--spacing);
 
         img {
           width: 100%;
@@ -73,17 +78,16 @@ header {
         align-items: center;
 
         background-color: var(--innerColor);
-        border-radius: 16px;
-        border: 8px solid var(--borderColor);
+        border-radius: calc(var(--spacing) * 2);
+        border: var(--spacing) solid var(--borderColor);
 
         width: 240px;
-        height: 80px;
+        height: var(--height-top-bar);
 
-        padding: 8px;
-        margin-left: 8px;
+        padding: var(--spacing);
+        margin: 0px var(--spacing) 0px var(--spacing);
 
         p {
-          font-family: "Fredoka One", sans-serif;
           font-size: 1.7rem;
           color: var(--textColor);
         }
@@ -92,73 +96,119 @@ header {
 
     .right {
       display: flex;
-      justify-content: left;
-      align-items: center;
+      justify-content: right;
+      align-items: flex-start;
+
+      width: 100%;
+      height: calc(var(--spacing) + var(--height-top-bar));
+
+      background-color: var(--innerColor);
+      border-radius: calc(var(--spacing) * 2) calc(var(--spacing) * 2) 0px 0px;
+      border: var(--spacing) solid var(--borderColor);
+
+      position: relative;
 
       #hamburger-menu {
         display: none;
       }
 
       nav {
+        display: block;
+        margin-top: var(--spacing);
+
         ul {
           display: flex;
           justify-content: left;
           align-items: center;
 
-          margin-right: 26px;
-
           li {
             list-style: none;
 
-            background-color: color-mix(in srgb,
-                var(--innerColor) 50%,
-                var(--backgroundColor) 50%);
-            border-radius: 16px;
-            border: 8px solid var(--borderColor);
+            background-color: color-mix(in srgb, var(--innerColor) 50%, var(--backgroundColor) 50%);
+            border-radius: calc(var(--spacing) * 2);
+            border: var(--spacing) solid var(--borderColor);
 
             padding: 0.5rem 1rem;
 
+            margin-right: var(--spacing);
+
             a {
               text-decoration: none;
-
-              font-family: "Fredoka One", sans-serif;
               font-size: 1.2rem;
               color: var(--textColor);
             }
           }
-
-          li:not(:last-child) {
-            margin-right: 8px;
-          }
         }
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: calc(var(--spacing) * 2);
+        background-color: var(--innerColor);
+        transform: translateY(calc(var(--spacing) * 2));
+      }
+
+      .circle1 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: calc(var(--spacing) * 4);
+        height: calc(var(--spacing) * 4);
+        background: transparent;
+        border-radius: 50%;
+        transform: translate(calc(var(--spacing) * -4), calc(var(--spacing) * 2));
+        border-radius: calc(var(--spacing) * 2);
+        border: var(--spacing) solid var(--borderColor);
+        clip-path: polygon(
+          calc(100% - var(--spacing)) 0,
+          calc(100% - var(--spacing)) calc(var(--spacing) * 2),
+          calc(100% - calc(var(--spacing) * 2)) calc(100% - calc(var(--spacing) * 2)),
+          var(--spacing) calc(100% - calc(var(--spacing) * -2)),
+          0 calc(100% - var(--spacing)),
+          0% 100%,
+          100% 100%,
+          100% 0
+        );
+      }
+
+      .rect1 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: calc(var(--spacing) * 2);
+        height: calc(var(--spacing) * 2);
+        background-color: var(--innerColor);
+        transform: translate(calc(var(--spacing) * -2), calc(var(--spacing) * 2));
+        clip-path: polygon(
+          0 100%,
+          100% 100%,
+          100% 0
+        );
       }
     }
   }
 
   .about {
-    margin: 0%;
-    padding: 300px;
-    background-color: rgb(0,255,0);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
+    margin: 0px var(--spacing) var(--spacing) var(--spacing);
+    padding: calc(var(--spacing) * 2);
+
+    background-color: var(--innerColor);
+    border-radius: calc(var(--spacing) * 2) 0px calc(var(--spacing) * 2) calc(var(--spacing) * 2);
+    border: var(--spacing) solid var(--borderColor);
+
+    h1 {
+      font-size: 1.7rem;
+      color: var(--textColor);
     
-  .about h1{
-    font-size: 60px;
-    padding-bottom:30px;
-    line-height: 1.5cm;
-    margin-top: -50px;
+    }
 
-    font-weight: bold;
-    color: #ffffff;
-  }
-
-  .about p{
-    font-size: 30px;
-    font-weight: bold;
-    color: #ffffff;
+    p {
+      font-size: 1.2rem;
+      color: var(--textColor);
+    }
   }
 }
 
