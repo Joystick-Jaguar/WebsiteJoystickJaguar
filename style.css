@@ -37,6 +37,10 @@
 body {
   background-color: var(--backgroundColor);
   overflow-x: hidden;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
 }
 
 header {
@@ -93,7 +97,8 @@ header {
         margin: 0px var(--spacing) 0px var(--spacing);
 
         p {
-          font-size: 1.7rem;
+          font-size: 1.45rem;
+          font-weight: bold;
         }
       }
     }
@@ -112,7 +117,7 @@ header {
 
       position: relative;
 
-      #hamburger-menu {
+      #hamburger-icon {
         display: none;
         margin-right: calc(var(--height-top-bar) / 2);
         margin-top: calc(var(--height-top-bar) / 2);
@@ -129,6 +134,34 @@ header {
           height: calc(var(--border-tickness) * 1.2);
           background-color: var(--borderColor);
           border-radius: calc(var(--border-tickness));
+        }
+      }
+
+      #hamburgermenu {
+        /* position: absolute; */
+        padding: var(--spacing);
+        background-color: var(--innerColor);
+        border-radius: var(--corner-rounding);
+
+        /* top: 0; */
+        /* bottom: 0; */
+        /* right: 50%; */
+        /* right: calc(var(--height-top-bar) / 2); */
+        /* position: absolute; */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        &::backdrop {
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        ul li {
+          list-style: none;
+          a {
+            text-decoration: none;
+            /* float: right; */
+          }
         }
       }
 
@@ -215,7 +248,7 @@ header {
 
     @media (max-width: 1080px) {
       .right {
-        #hamburger-menu {
+        #hamburger-icon {
           display: flex;
         }
 
@@ -272,7 +305,7 @@ main {
       }
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 750px) {
       grid-template-columns: 1fr;
     }
   }
@@ -321,7 +354,7 @@ main {
       }
     }
 
-    @media (max-width: 300px) {
+    @media (max-width: 550px) {
       grid-template-columns: 1fr;
     }
   }
