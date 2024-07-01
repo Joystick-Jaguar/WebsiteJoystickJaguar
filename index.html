@@ -25,11 +25,22 @@
       <div class="right">
         <div class="rect1"></div>
         <div class="circle1"></div>
-        <div id="hamburger-menu">
+        <div id="hamburger-icon" onclick="openModal()">
           <span></span>
           <span></span>
           <span></span>
         </div>
+
+        <dialog id="hamburgermenu">
+          <ul>
+            <li><a href="#about" onclick="closeModal()">About</a></li>
+            <li><a href="#games" onclick="closeModal()">Games</a></li>
+            <li><a href="#news" onclick="closeModal()">News</a></li>
+            <li><a href="#team" onclick="closeModal()">Team</a></li>
+            <li><a href="#carreers" onclick="closeModal()">Carreers</a></li>
+            <li><a href="#contact" onclick="closeModal()">Contact</a></li>
+          </ul>
+        </dialog>
   
         <nav>
           <ul>
