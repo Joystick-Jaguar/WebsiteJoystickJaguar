@@ -3,6 +3,10 @@
   src: url("assets/fonts/FredokaOne-Regular.ttf") format("truetype");
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --backgroundColor: #51857f;
   --innerColor: #b7c8c6;
@@ -370,11 +374,13 @@ footer {
   }
 
   p {
+      color: #ffffff;
       text-align: center;
       padding: 20px;
   }
 
   a {
+      color: #ffffff;
       justify-content: center;
       flex-direction: column;
       align-items: center;
