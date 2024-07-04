@@ -2,7 +2,10 @@
     font-family: "Fredoka One";
     src: url("assets/fonts/FredokaOne-Regular.ttf") format("truetype");
   }
-  
+
+*{
+    font-family: "Fredoka One", sans-serif;;
+}
 
 html {
     background-color: #51857f;
@@ -15,5 +18,9 @@ main {
     .last-modified-date {
         font-style: italic;
         font-weight: bold;
+    }
+
+    p {
+        line-height: 20px;
     }
 }
