@@ -20,6 +20,10 @@ main {
         font-weight: bold;
     }
 
+    .information p {
+        line-height: 5px;    
+    }
+
     p {
         line-height: 20px;
     }
