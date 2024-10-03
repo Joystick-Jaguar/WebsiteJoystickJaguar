@@ -5,147 +5,116 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Security-Policy" />
-  <link rel="icon" type="image/svg+xml" href="assets/icons/icon.png" sizes="any">
+  <meta name="description"
+    content="Joystick Jaguar is an indie game studio based in Belgium, creating stylized games. Join us for exciting gaming experiences!">
+  <link rel="icon" type="image/svg+xml" href="./assets/icons/icons/icon.png" sizes="any">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <title>Joystick Jaguar</title>
 </head>
 
 <body>
-  <header> <!-- logo & name & nav-bar & about -->
-    <div class="top-bar">
-      <div class="left">
-        <div id="logo-container">
-          <img src="assets/icons/icon.png" alt="Joystick Jaguar" />
-        </div>
-        <div id="name-container">
-          <p>Joystick Jaguar</p>
-        </div>
-      </div>
-  
-      <div class="right">
-        <div class="rect1"></div>
-        <div class="circle1"></div>
-        <div id="hamburger-icon" onclick="openModal()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        <dialog id="hamburgermenu">
-          <ul>
-            <li><a href="#about" onclick="closeModal()">About</a></li>
-            <li><a href="#games" onclick="closeModal()">Games</a></li>
-            <li><a href="#news" onclick="closeModal()">News</a></li>
-            <li><a href="#team" onclick="closeModal()">Team</a></li>
-            <li><a href="#carreers" onclick="closeModal()">Carreers</a></li>
-            <li><a href="#contact" onclick="closeModal()">Contact</a></li>
-          </ul>
-        </dialog>
-  
-        <nav>
-          <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#games">Games</a></li>
-            <li><a href="#news">News</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="#carreers">Carreers</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
+  <header>
+    <img src="/assets/icons/JoystickJaguar.png" alt="Company Logo">
+    <div class="hamburger" id="hamburger" aria-label="Toggle navigation">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
     </div>
-
-    <div class="about">
-      <h1>Joystick Jaguar</h1>
-      <p>Joystick Jaguar is an indie game studio based in Belgium. We mainly focus on making small games in stylized genre. We are a small team of passionate developers who love to create games. We are always looking for new talent to join our team. If you are interested in working with us, please contact us.</p>
-    </div>
+    <nav id="nav" aria-label="Main Navigation">
+      <a href="#about">About</a>
+      <a href="#games">Games</a>
+      <a href="#news">News</a>
+      <a href="#team">Team</a>
+      <a href="#careers">Careers</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
   <main>
+    <section id="about">
+      <h1>About</h1>
+      <p>Joystick Jaguar is an indie game studio based in Belgium. We mainly focus on making small games in a stylized
+        genre. We are a small team of passionate developers who love to create games. We are always looking for new
+        talent to join our team. If you are interested in working with us, please contact us.</p>
+    </section>
+
     <section id="games">
-      <div class="a-game-of-castles game">
-        <h1>A Game of Castles</h1>
-      </div>
-      <div class="game">
-        <h1>Game 2</h1>
-      </div>
-      <div class="game">
-        <h1>Game 3</h1>
-      </div>
-      <div class="game">
-        <h1>Game 4</h1>
-      </div>
-      <div class="game">
-        <h1>Game 5</h1>
-      </div>
-      <div class="game">
-        <h1>Game 6</h1>
+      <h1>Games</h1>
+      <div class="games-container">
+        <div class="game-box">
+          <h2>A Game of Castles</h2>
+          <p>'description game'</p>
+        </div>
+        <div class="game-box">
+          <h2>Coming Soon</h2>
+          <p>Stay tuned for our exciting new game launch!</p>
+        </div>
       </div>
     </section>
+
     <section id="news">
       <h1>News</h1>
-      <p>Exciting news from Joystick Jaguar! Our first game is launching on Steam this October. Follow us on YouTube, Instagram, and TikTok for behind-the-scenes development updates and exclusive promotions. Get ready to dive into our thrilling gaming experience—coming soon!</p>
+      <p>Exciting news from Joystick Jaguar! Our first game is launching on Steam this October. Follow us on YouTube,
+        Instagram, and TikTok for behind-the-scenes development updates and exclusive promotions. Get ready to dive into
+        our thrilling gaming experience—coming soon!</p>
     </section>
+
     <section id="team">
-      <div class="jorin people">
-        <h1>Jorin</h1>
-        <p>Lead Programmer</p>
-        <p>CEO</p>
-      </div>
-      <div class="sander people">
-        <h1>Sander</h1>
-        <p>Artist</p>
-        <p>CMO</p>
-      </div>
-      <div class="brian people">
-        <h1>Brian</h1>
-        <p>Lead game-designer</p>
-        <p>CFO</p>
-      </div>
-      <div class="robbert people">
-        <h1>Robbert</h1>
-        <p>Lead Artist</p>
+      <h1>Team</h1>
+      <div class="team-container">
+        <div class="team-box">
+          <h2>Jorin</h2>
+          <p>Lead Programmer<br>CEO</p>
+        </div>
+        <div class="team-box">
+          <h2>Sander</h2>
+          <p>Artist<br>CMO</p>
+        </div>
+        <div class="team-box">
+          <h2>Brian</h2>
+          <p>Lead Game Designer<br>CFO</p>
+        </div>
+        <div class="team-box">
+          <h2>Robbert</h2>
+          <p>Lead Artist</p>
+        </div>
       </div>
     </section>
-    <section id="carreers">
-      <h1>Carreers</h1>
-      <p>Excited to break into the gaming industry? Join Joystick Jaguar, a passionate startup gearing up for our first game launch on Steam this October. We're a tight-knit team dedicated to crafting immersive gaming experiences. While we're just starting out, we offer a unique opportunity to grow with us and make a real impact.</p>
+
+    <section id="careers">
+      <h1>Careers</h1>
+      <p>Excited to break into the gaming industry? Join Joystick Jaguar, a passionate startup gearing up for our first
+        game launch on Steam this October. We're a tight-knit team dedicated to crafting immersive gaming experiences.
+        While we're just starting out, we offer a unique opportunity to grow with us and make a real impact.</p>
     </section>
 
     <section id="contact">
       <h1>Contact</h1>
-      <p>1234 Game Street</p>
-      <p>Game City, 1234</p>
-      <p>Belgium</p>
-      <p>
-    </div>
-
+      <p>If you have any questions or inquiries, feel free to reach out to us through our contact form or social media
+        channels. We would love to hear from you!</p>
+    </section>
   </main>
 
   <footer>
-    <div class="bottom_footer">
-      <p>Copyright Joystick Jaguar 2024. All rights reserved</p>
-      <div class="button-container">
-          <a href="https://www.instagram.com/joystickjaguar" target="_blank">
-              <img src="assets/icons/instagram.png" alt="Instagram" class="button-image">
-          </a>
-          <a href="https://discord.gg/xrzGnVJ9r3" target="_blank">
-              <img src="assets/icons/discord.png" alt="Discord" class="button-image">
-          </a>
-          <a href="https://www.youtube.com/channel/UCuvaMygIMlTpsHQ973XNAxw" target="_blank">
-              <img src="assets/icons/youtube.png" alt="Youtube" class="button-image">
-          </a>
-          <a href="https://www.linkedin.com/company/joystick-jaguar/" target="_blank">
-              <img src="assets/icons/linkedin.png" alt="LinkedIn" class="button-image">
-          </a>
-
-
-      </div>
-      <div class="policy-container">
-          <a href="pp.html" class="button">Privacy Policy</a>
-          <a href="" class="button">Cookie Policy</a>
-      </div>
-  </div>
+    <p>&copy; 2024 Joystick Jaguar. All rights reserved.</p>
+    <div class="socials">
+      <a href="https://discord.gg/RG2g5HA2" target="_blank" rel="noopener noreferrer" aria-label="Join us on Discord">
+        <img src="./assets/icons/discord.png" alt="Discord" class="social-icon">
+      </a>
+      <a href="https://www.instagram.com/joystickjaguar" target="_blank" rel="noopener noreferrer"
+        aria-label="Follow us on Instagram">
+        <img src="assets/icons/instagram.png" alt="Instagram" class="social-icon">
+      </a>
+      <a href="https://www.youtube.com/channel/UCuvaMygIMlTpsHQ973XNAxw" target="_blank" rel="noopener noreferrer"
+        aria-label="Subscribe to our YouTube channel">
+        <img src="./assets/icons/youtube.png" alt="YouTube" class="social-icon">
+      </a>
+      <a href="https://www.linkedin.com/company/joystick-jaguar/" target="_blank" rel="noopener noreferrer"
+        aria-label="Connect with us on LinkedIn">
+        <img src="./assets/icons/linkedin.png" alt="LinkedIn" class="social-icon">
+      </a>
+    </div>
   </footer>
 
   <script src="script.js"></script>

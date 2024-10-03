@@ -1,18 +1,18 @@
-const hamburgerMenu = document.getElementById("hamburgermenu");
+const hamburger = document.getElementById('hamburger');
+  const nav = document.getElementById('nav');
 
-document.addEventListener("DOMContentLoaded", () => {
-  hamburgerMenu.addEventListener("click", (event) => {
-    if (event.target !== hamburgerMenu) return;
-    closeModal()
+  hamburger.addEventListener('click', () => {
+    nav.classList.toggle('active');
   });
-});
 
-function openModal() {
-  hamburgerMenu.showModal();
-  document.body.classList.add('no-scroll');
-}
+  // Smooth scrolling for navigation links
+  const navLinks = document.querySelectorAll('nav a');
 
-function closeModal() {
-  hamburgerMenu.close();
-  document.body.classList.remove('no-scroll');
-}
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      targetSection.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
