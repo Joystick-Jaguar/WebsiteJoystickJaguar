@@ -1,3 +1,0 @@
-RewriteEngine On
-RewriteCond %{HTTP_HOST} ^www\.joystickjaguar\.be [NC]
-RewriteRule ^(.*)$ https://joystickjaguar.be/$1 [L,R=301]
