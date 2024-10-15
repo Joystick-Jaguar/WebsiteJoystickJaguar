@@ -16,3 +16,34 @@ const hamburger = document.getElementById('hamburger');
       targetSection.scrollIntoView({ behavior: 'smooth' });
     });
   });
+
+
+const carouselContainer = document.querySelector('.carousel-container');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+let currentSlide = 0;
+const totalSlides = document.querySelectorAll('.team-box').length - 1;
+
+nextBtn.addEventListener('click', () => {
+  if (currentSlide < totalSlides) {
+    currentSlide++;
+  } else {
+    currentSlide = 0;
+  }
+  updateCarousel();
+});
+
+prevBtn.addEventListener('click', () => {
+  if (currentSlide > 0) {
+    currentSlide--;
+  } else {
+    currentSlide = totalSlides;
+  }
+  updateCarousel();
+});
+
+function updateCarousel() {
+  const slideWidth = carouselContainer.querySelector('.team-box').offsetWidth;
+  carouselContainer.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+}
